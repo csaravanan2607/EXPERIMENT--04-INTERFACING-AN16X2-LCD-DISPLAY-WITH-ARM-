@@ -174,111 +174,30 @@ https://engineeringxpert.com/wp-content/uploads/2022/04/26.png
 
 ## STM 32 CUBE PROGRAM :
 ````
-#include "main.h"
-#include "lcd.h"
-void SystemClock_Config(void);
-static void MX_GPIO_Init(void);
-int main(void)
-{
-  HAL_Init();
-
-  SystemClock_Config();
-
-  MX_GPIO_Init();
-  Lcd_PortType ports[] = { GPIOA, GPIOA, GPIOA, GPIOA };
-      Lcd_PinType pins[] = {GPIO_PIN_3, GPIO_PIN_2, GPIO_PIN_1, GPIO_PIN_0};
+Name: Saravanan C
+Reg. no.: 212222110041
+Dept.:CSE(IoT)
+````
+````
+ Lcd_PortType ports[] = { GPIOA, GPIOA, GPIOA, GPIOA };
+     // Lcd_PinType pins[] = {D4_Pin, D5_Pin, D6_Pin, D7_Pin};
+     Lcd_PinType pins[] = {GPIO_PIN_3, GPIO_PIN_2, GPIO_PIN_1, GPIO_PIN_0};
      Lcd_HandleTypeDef lcd;
-          lcd = Lcd_create(ports, pins, GPIOB, GPIO_PIN_0, GPIOB, GPIO_PIN_1, LCD_4_BIT_MODE);
-     Lcd_cursor(&lcd, 0,1);
-     Lcd_string(&lcd, "ADHITHYA");
-     Lcd_cursor(&lcd, 1,1);
-     Lcd_string(&lcd, "212222230007");
-  while (1)
-  {
-	  for ( int x = 1; x <= 200 ; x++ )
-	 	  { Lcd_cursor(&lcd, 2,7);
-	 	  Lcd_int(&lcd, x);
-	 	  HAL_Delay (1000); }
-      }
-}
-
-void SystemClock_Config(void)
-{
-  RCC_OscInitStruct = {0};
-  RCC_ClkInitStruct = {0};
-
-  __HAL_RCC_PWR_CLK_ENABLE();
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
-  {
-    Error_Handler();
-  }
-}
-
-static void MX_GPIO_Init(void)
-{
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
-
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3, GPIO_PIN_RESET);
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_1, GPIO_PIN_RESET);
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-}
-
-void Error_Handler(void)
-{
-  __disable_irq();
-  while (1)
-  {
-  }
-}
-
-#ifdef  USE_FULL_ASSERT
-void assert_failed(uint8_t *file, uint32_t line)
-{
-}
-#endif 
+     // Lcd_create(ports, pins, RS_GPIO_Port, RS_Pin, EN_GPIO_Port, EN_Pin, LCD_4_BIT_MODE);
+     lcd = Lcd_create(ports, pins, GPIOB, GPIO_PIN_0, GPIOB, GPIO_PIN_1, LCD_4_BIT_MODE);
+     Lcd_cursor(&lcd, 0,2);
+     Lcd_string(&lcd, "Saravanan C");
+ 
 
 ````
-
-
-
-
 ## Output screen shots of proteus  :
 
-![](https://user-images.githubusercontent.com/118707079/235148743-07bc5362-ce3a-4887-8c60-970912b9e3ec.png)
- 
- 
+
+ ![lcdprojt - Proteus 8 Professional - Schematic Capture 15-09-2023 21_36_56](https://github.com/saravanan2607/EXPERIMENT--04-INTERFACING-AN16X2-LCD-DISPLAY-WITH-ARM-/assets/121395849/963f7c97-95de-4105-9a07-10faa856b35f)
+
  ## CIRCUIT DIAGRAM (EXPORT THE GRAPHICS TO PDF AND ADD THE SCREEN SHOT HERE): 
- ![](https://user-images.githubusercontent.com/118707079/235148331-ed14225f-8a39-4a8b-8d9c-271f32fd1a1c.png)
+ ![lcdprojt PDF - Adobe Acrobat Reader (64-bit) 15-09-2023 21_40_09 (2)](https://github.com/saravanan2607/EXPERIMENT--04-INTERFACING-AN16X2-LCD-DISPLAY-WITH-ARM-/assets/121395849/5ea082ce-fd04-42d7-9085-36683f81558f)
+
  
 ## Result :
 Interfacing a lcd display with ARM microcontroller are simulated in proteus and the results are verified.
